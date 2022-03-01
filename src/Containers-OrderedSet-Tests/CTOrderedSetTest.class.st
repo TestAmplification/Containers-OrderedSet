@@ -119,6 +119,28 @@ CTOrderedSetTest >> testAddFirstDuplicate [
 	self assert: set equals: expected.
 ]
 
+{ #category : #'as yet unclassified' }
+CTOrderedSetTest >> testAddFirst_amp_U0 [
+
+	"SmallAmp has derived this test from `CTOrderedSetTest>>#testAddFirst` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTOrderedSet>> #addFirst:` from 210 to 220:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ newObject`
+		Dynamic state: {#newObject->#ipsum}
+		Mutant id: RemoveCaretOperator#CTOrderedSet#addFirst:#210#220
+"
+
+	<madeBySmallAmp>
+	| set expected aString |
+	aString := (CTOrderedSet withAll:
+		            #( #ipsum #ipsum #ipsum #ipsum #ipsum )) addFirst:
+		           #ipsum.
+	self assert: aString equals: #ipsum.
+	expected := CTOrderedSet withAll:
+		            #( #ipsum #ipsum #ipsum #ipsum #ipsum #ipsum )
+]
+
 { #category : #'ordered collection tests' }
 CTOrderedSetTest >> testAddLast [
 	| set expected |
